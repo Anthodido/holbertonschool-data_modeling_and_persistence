@@ -1,0 +1,3 @@
+select author, count (*)
+from books
+group by author;
