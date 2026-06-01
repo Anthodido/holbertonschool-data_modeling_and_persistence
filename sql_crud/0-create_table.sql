@@ -1,9 +1,9 @@
-create table books (
-    id integer primary key,
-    title text not null,
-    author text not null,
-    genre text not null,
-    price real not null,
-    stock integer not null,
-    published_year integer not null
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    price REAL NOT NULL,
+    stock INTEGER NOT NULL,
+    published_year INTEGER NOT NULL
 )
