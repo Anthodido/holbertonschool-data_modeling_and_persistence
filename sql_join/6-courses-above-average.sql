@@ -1,12 +1,13 @@
-select count(student_id) as num_students, title as course_title
-from courses
-inner join enrollments
-on courses.id = enrollments.course_id
-group by title
-having num_students > (select avg(num_students)
-                      from (select count(student_id) as num_students
-                            from courses
-                            inner join enrollments
-                            on courses.id = enrollments.course_id
-                            group by title) as subquery)
-order by title;
+SELECT courses.title AS course_title
+FROM courses
+INNER JOIN enrollments ON enrollments.course_id = courses.id
+GROUP BY courses.id, courses.title
+HAVING COUNT(enrollments.student_id) > (
+    SELECT AVG(enrollment_count)
+    FROM (
+        SELECT COUNT(student_id) AS enrollment_count
+        FROM enrollments
+        GROUP BY course_id
+    )
+)
+ORDER BY course_title ASC;
