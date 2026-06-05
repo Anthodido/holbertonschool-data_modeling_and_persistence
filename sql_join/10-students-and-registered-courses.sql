@@ -4,3 +4,4 @@ inner join registrations
 on students.registration_id = students.id
 inner join courses
 on courses.registration_id = courses.id
+order by student_name, course_title;
