@@ -1,7 +1,5 @@
-select name as student_name, title as course_title
-from students
-inner join registrations
-on students.registration_id = students.id
-inner join courses
-on courses.registration_id = courses.id
-order by student_name, course_title;
+SELECT students.name AS student_name, courses.title AS course_title
+FROM registrations
+INNER JOIN students ON registrations.student_id = students.id
+INNER JOIN courses ON registrations.course_id = courses.id
+ORDER BY student_name ASC, course_title ASC;

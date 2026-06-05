@@ -1,5 +1,4 @@
-select name as instructor_name, title as course_title
-from instructors
-left join courses
-on courses.instructor_id = instructors.id
-order by instructor_name, course_title;
+SELECT instructors.name AS instructor_name, courses.title AS course_title
+FROM instructors
+LEFT JOIN courses ON courses.instructor_id = instructors.id
+ORDER BY instructor_name ASC, course_title ASC;
