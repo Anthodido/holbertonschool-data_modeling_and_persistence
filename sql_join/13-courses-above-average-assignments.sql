@@ -1,12 +1,13 @@
-select count(*) as num_assignement, title as course_title
-from courses
-inner join assignments
-on courses.id = assignments.course_id
-group by title
-having num_assignement > (select avg(num_assignement)
-                      from (select count(*) as num_assignement, title
-                            from courses
-                            inner join assignments
-                            on courses.id = assignments.course_id
-                            group by title) as subquery)
-order by title;
+SELECT courses.title AS course_title
+FROM courses
+INNER JOIN assignments ON assignments.course_id = courses.id
+GROUP BY courses.id, courses.title
+HAVING COUNT(assignments.id) > (
+    SELECT AVG(assignment_count)
+    FROM (
+        SELECT COUNT(id) AS assignment_count
+        FROM assignments
+        GROUP BY course_id
+    )
+)
+ORDER BY course_title ASC;

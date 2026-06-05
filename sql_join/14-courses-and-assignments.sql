@@ -1,5 +1,4 @@
-select courses.title as course_title, assignments.title as assignment_title
-from courses
-left join assignments
-on assignments.course_id = courses.id
-order by courses.title, assignments.title;
+SELECT courses.title AS course_title, assignments.title AS assignment_title
+FROM courses
+LEFT JOIN assignments ON assignments.course_id = courses.id
+ORDER BY course_title ASC, assignment_title ASC;
